@@ -20,7 +20,7 @@ public class MyEntry<K,V> implements Map.Entry<K,V> {
 
     @Override
     public K getKey() {
-        return null;
+        return key;
     }
 
     /**
@@ -35,7 +35,7 @@ public class MyEntry<K,V> implements Map.Entry<K,V> {
      */
     @Override
     public V getValue() {
-        return null;
+        return value;
     }
 
     /**
@@ -60,7 +60,9 @@ public class MyEntry<K,V> implements Map.Entry<K,V> {
      */
     @Override
     public V setValue(V value) {
-        return null;
+        V val = this.value;
+        this.value = value;
+        return val;
     }
 
 
