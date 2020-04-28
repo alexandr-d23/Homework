@@ -9,9 +9,8 @@ import java.util.LinkedHashMap;
 public class IniInputStream extends InputStream {
     BufferedReader br;
 
-    IniInputStream(Path path)throws FileNotFoundException{
-        FileReader fr = new FileReader(path.toString());
-        br = new BufferedReader(fr);
+    IniInputStream(InputStream in)throws FileNotFoundException{
+        br = new BufferedReader(new InputStreamReader(in));
     }
 
     public Map<String, Map<String,String>> readINI()throws IOException{

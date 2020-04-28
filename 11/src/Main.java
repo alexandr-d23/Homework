@@ -1,3 +1,5 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -5,8 +7,7 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("src/Text");
-        IniInputStream in = new IniInputStream(path);
+        IniInputStream in = new IniInputStream(new FileInputStream("src/Text"));
         Map<String, Map<String,String>> map = in.readINI();
         Map<String,String> section;
         for(Map.Entry<String,Map<String,String>> entry : map.entrySet()){
@@ -18,7 +19,7 @@ public class Main {
                 System.out.print(pair.getValue()+"\n");
             }
         }
-        IniOutputStream out = new IniOutputStream(path);
+        IniOutputStream out = new IniOutputStream(new FileOutputStream("src/Text"));
         out.writeINI(map);
     }
 }

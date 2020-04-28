@@ -10,9 +10,8 @@ import java.util.stream.*;
 public class IniOutputStream extends OutputStream {
     BufferedWriter bw;
 
-    IniOutputStream(Path path) throws IOException {
-        FileWriter fr = new FileWriter(path.toString());
-        bw = new BufferedWriter(fr);
+    IniOutputStream(OutputStream out) throws IOException {
+        bw = new BufferedWriter(new OutputStreamWriter(out));
     }
 
     public void writeINI(Map<String, Map<String,String>> map) throws IOException{

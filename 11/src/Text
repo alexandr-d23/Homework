@@ -10,4 +10,3 @@ k = l
 p1 = Killer
 p2 = Doctor
 p3 = Striker
- Map(String section, Map<String, String>>
