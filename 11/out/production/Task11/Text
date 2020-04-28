@@ -1,0 +1,12 @@
+[Section]
+a = d
+c = a
+k = l
+[Second]
+1 = 5
+2 = 6
+3 = 7
+[Players]
+p1 = Killer
+p2 = Doctor
+p3 = Striker
