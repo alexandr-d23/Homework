@@ -1,3 +1,6 @@
+import java.io.Serializable;
+import java.util.Objects;
+
 public class Student implements Serializable {
     private String name;
     private boolean gender;
@@ -33,5 +36,21 @@ public class Student implements Serializable {
                 ", gender=" + gender +
                 ", birthYear=" + birthYear +
                 ", group=" + group;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return isGender() == student.isGender() &&
+                getBirthYear() == student.getBirthYear() &&
+                getGroup() == student.getGroup() &&
+                Objects.equals(getName(), student.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), isGender(), getBirthYear(), getGroup());
     }
 }
