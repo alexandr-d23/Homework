@@ -1,7 +1,4 @@
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class UMCollection<T> extends AbstractCollection<T> implements Iterable<T>{
     private Object[] array;
@@ -26,6 +23,21 @@ public class UMCollection<T> extends AbstractCollection<T> implements Iterable<T
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(array);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "UMCollection{" +
+                "array=" + Arrays.toString(array) +
+                ", size=" + size +
+                '}';
     }
 
     @Override

@@ -37,6 +37,14 @@ public class MCollection<T> extends AbstractCollection<T> implements Iterable<T>
     }
 
     @Override
+    public String toString() {
+        return "MCollection{" +
+                "array=" + Arrays.toString(array) +
+                ", size=" + size +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof MCollection)) return false;
