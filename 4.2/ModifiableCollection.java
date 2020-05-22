@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class MCollection<T> extends AbstractCollection<T> implements Iterable<T> {
+public class ModifiableCollection<T> extends AbstractCollection<T> implements Iterable<T> {
     private Object[] array;
     private int size;
-    public MCollection(Collection<? extends T> col){
+    public ModifiableCollection(Collection<? extends T> col){
         Iterator it=col.iterator();
         size=col.size();
         for(int i=0;i<size;i++){
@@ -11,7 +11,7 @@ public class MCollection<T> extends AbstractCollection<T> implements Iterable<T>
         }
     }
 
-    public MCollection(){
+    public ModifiableCollection(){
         array=new Object[0];
         size=0;
     }
@@ -37,18 +37,10 @@ public class MCollection<T> extends AbstractCollection<T> implements Iterable<T>
     }
 
     @Override
-    public String toString() {
-        return "MCollection{" +
-                "array=" + Arrays.toString(array) +
-                ", size=" + size +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof MCollection)) return false;
-        MCollection<T> that = (MCollection<T>) o;
+        if (!(o instanceof ModifiableCollection)) return false;
+        ModifiableCollection<T> that = (ModifiableCollection<T>) o;
         if(size!=that.size)return false;
         boolean[] arr=new boolean[size];
         boolean fl;

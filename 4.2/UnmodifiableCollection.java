@@ -1,9 +1,12 @@
-import java.util.*;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class UMCollection<T> extends AbstractCollection<T> implements Iterable<T>{
+public class UnmodifiableCollection<T> extends AbstractCollection<T> implements Iterable<T>{
     private Object[] array;
     private int size;
-    public UMCollection(Collection<? extends T> col){
+    public UnmodifiableCollection(Collection<? extends T> col){
         Iterator it=col.iterator();
         size=col.size();
         for(int i=0;i<size;i++){
@@ -11,10 +14,11 @@ public class UMCollection<T> extends AbstractCollection<T> implements Iterable<T
         }
 
     }
-    public UMCollection(){
+    public UnmodifiableCollection(){
         array=new Object[0];
         size=0;
     }
+
     @Override
     public Iterator<T> iterator() {
         return new UMIterator<T>(array,size);
@@ -26,25 +30,10 @@ public class UMCollection<T> extends AbstractCollection<T> implements Iterable<T
     }
 
     @Override
-    public int hashCode() {
-        int result = Objects.hash(size);
-        result = 31 * result + Arrays.hashCode(array);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "UMCollection{" +
-                "array=" + Arrays.toString(array) +
-                ", size=" + size +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UMCollection)) return false;
-        UMCollection<T> that = (UMCollection<T>) o;
+        if (!(o instanceof UnmodifiableCollection)) return false;
+        UnmodifiableCollection<T> that = (UnmodifiableCollection<T>) o;
         if(size!=that.size)return false;
         boolean[] arr=new boolean[size];
         boolean fl;

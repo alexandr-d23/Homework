@@ -1,9 +1,15 @@
 import java.io.*;
 
-public class IOStream {
+public class IOStreamTask {
+
+    public static void main(String[] args) {
+        write(-1812394, 'ы');
+        readAndOutput();
+
+    }
 
     public static void write(int num, char c) {
-        try (FileOutputStream fw = new FileOutputStream("C:\\Users\\Alex\\Desktop\\in.txt")) {
+        try (FileOutputStream fw = new FileOutputStream("src\\in.txt")) {
             int number = num;
             char ch = c;
             fw.write(number >>> 24 & 0xFF);
@@ -18,8 +24,8 @@ public class IOStream {
         }
     }
 
-    public static void read(){
-        try(InputStream fr = new FileInputStream("C:\\Users\\Alex\\Desktop\\in.txt")){
+    public static void readAndOutput(){
+        try(InputStream fr = new FileInputStream("src\\in.txt")){
             int n1=fr.read();
             int n2=fr.read();
             int n3=fr.read();
