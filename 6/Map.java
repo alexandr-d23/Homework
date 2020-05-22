@@ -118,4 +118,31 @@ public class Map<K,V> extends AbstractMap<K,V> {
     public int size(){
         return list.size();
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Map)) return false;
+        if (!super.equals(o)) return false;
+        Map<?, ?> map = (Map<?, ?>) o;
+        if(map.size()!=size())return false;
+        for(Map.Entry<?,?> entry : list){
+            if(!map.containsKey(entry.getKey()) || !map.get(entry.getKey()).equals(entry.getValue())){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), list);
+    }
+
+    @Override
+    public String toString() {
+        return "Map{" +
+                "list=" + list.toString() +
+                '}';
+    }
 }
