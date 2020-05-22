@@ -14,9 +14,7 @@ public class StudentObjectInputStream extends InputStream implements AutoCloseab
         catch (IOException  e) {
             throw e;
         }
-        catch (ClassNotFoundException e){
-            return null;
-        }
+        
     }
 
     @Override
